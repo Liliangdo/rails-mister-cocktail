@@ -3,3 +3,14 @@
   <h2><%= @cocktail.name %></h2>
 </div>
 
+ <div class="text-center">
+  <% @cocktail.doses.each do |dose| %>
+    <%= dose.ingredient.name %> <%= dose.description %> <%= link_to "", cocktail_dose_path(@cocktail, dose), method: "delete", data: { confirm:"Are you sure ? " }, class:"fa fa-trash" %>
+  <% end %>
+ </div>
+
+<%= render "doses/new", cocktail: @cocktail, dose: @dose, ingredients: @ingredients %>
+
+
+<h1 class="text-center"> <%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail), class: "btn btn-success btn-md" %></h1>
+
